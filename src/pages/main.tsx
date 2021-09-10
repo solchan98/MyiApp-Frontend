@@ -1,13 +1,20 @@
 import React from 'react';
 
-// type LoginProps = {
-//     isLogin: boolean;
-// }
+type MainProps = {
+    studentId: number,
+    name: string, 
+    major: string,
+    grade: number,
+    semester: number,
+    status: string,
+    taken: number,
+    averageScore: string
+}
 
-const Main = () => {
+const Main = ({studentId, name, major, grade, semester, status, taken, averageScore}: MainProps) => {
     return (
         <div>
-            {`Hello, User?`}
+            {`${studentId}\n${name}\n${major}\n${grade}\n${semester}\n${status}\n${taken}\n${averageScore}`}
         </div>
     );
   }

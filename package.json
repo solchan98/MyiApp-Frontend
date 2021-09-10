@@ -2,6 +2,7 @@
   "name": "myiapp-frontend",
   "version": "0.1.0",
   "private": true,
+  "type": "commonjs",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -10,6 +11,8 @@
     "@types/node": "^12.20.24",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "axios": "^0.21.4",
+    "cheerio": "^1.0.0-rc.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -39,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ts-node": "^10.2.1"
   }
 }

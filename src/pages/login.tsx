@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
 type LoginProps = {
     isLogin: boolean;
+    password: string;
+    setPassword: any;
+    studentId: number;
+    setStudentId: any;
 }
 
-const Login = ({ isLogin }: LoginProps ) => {
+const Login = ({ isLogin, studentId, setStudentId,password, setPassword}: LoginProps ) => {
+
+    const onChangeStudentNumber = useCallback((e) => {
+        setStudentId(e.target.value)
+    }, []);
+
+    const onChangePassword = useCallback((e) => {
+        setPassword(e.target.value)
+    }, []);
     return (
         <div>
-            {`You need to login`}
+            <input name='studentId' value={studentId} onChange={onChangeStudentNumber} />
+            <input name='password' value={password} onChange={onChangePassword} type="password"/>
+            {`\nYou need to login`}
         </div>
     );
   }
