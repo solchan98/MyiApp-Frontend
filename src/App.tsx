@@ -11,6 +11,7 @@ import { NavBar } from 'antd-mobile';
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
 
+import { HOST } from './host';
 
 axios.defaults.headers['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
@@ -27,13 +28,12 @@ function App() {
   // 학사 일정 데이터
   const [schedule, setSchedule] = useState<object>();
 
-
   const onLoginClick = async () => {
     const data =   {
       "studentId": id,
       "password": password,
     }
-    const res = await axios.post("http://*/api/account/login", data);
+    const res = await axios.post(`http://${HOST}/api/account/login`, data);
     
     getMain(res.data);
 

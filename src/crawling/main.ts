@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import cheerio from 'cheerio';
+import { HOST } from '../host';
 
 /* 학번, 이름, 학과, 학년, 이수학기, 학적상태*/
 /* 이수학점 평균평점 */
@@ -16,7 +17,7 @@ interface BasicUserData {
 }
 
 const getMainData = async(key: string) => {
-    const res = await axios.get("http://*/api/main", {
+    const res = await axios.get(`http://${HOST}/api/main`, {
         headers: {'key': key}
     });
     const $ = cheerio.load(res.data);
