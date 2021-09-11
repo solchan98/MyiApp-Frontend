@@ -22,3 +22,5 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 [MYIAPP-5] 교내일정 크롤링 하여 메인 페이지에 제공하기 
 
 ---
+
+[MYIAPP-6] 쿠키를 이용하여 아이디 및 비밀번호 양방향 암호화 해서 기억하기

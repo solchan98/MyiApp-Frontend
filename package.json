@@ -14,8 +14,11 @@
     "antd": "^4.16.13",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
     "cheerio": "^1.0.0-rc.10",
+    "crypto-js": "^4.1.1",
     "react": "^17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.1",
@@ -47,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.0.2",
     "@types/styled-components": "^5.1.14",
     "ts-node": "^10.2.1"
   }
