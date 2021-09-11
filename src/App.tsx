@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 import './App.css';
 import Login from './pages/login';
 import Main from './pages/main';
 
+import { NavBar } from 'antd-mobile';
+
 import getMainData from './crawling/main';
+import getScheduleData from './crawling/schedule';
 
 
 axios.defaults.headers['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 
-
 function App() {
+
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
+  // 로그인 데이터
+  const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const [studentId, setStudentId] = useState<number>(0);
-  const [name, setName] = useState<string>("");
-  const [major, setMajor] = useState<string>("");
-  const [grade, setGrade] = useState<number>(0);
-  const [semester, setSemester] = useState<number>(0);
-  const [status, setStatus] = useState<string>("");
-  const [taken, setTaken] = useState<number>(0);
-  const [averageScore, setAverageScore] = useState<string>("");
+  // 메인 페이지 데이터
+  const [user, setUser] = useState<object>();
+  // 학사 일정 데이터
+  const [schedule, setSchedule] = useState<object>();
 
 
   const onLoginClick = async () => {
     const data =   {
-      "studentId": studentId,
-      "password": password
+      "studentId": id,
+      "password": password,
     }
-    const res = await axios.post("***/api/account/login", data);
-    // console.log(res.data)
+    const res = await axios.post("http://*/api/account/login", data);
     
     getMain(res.data);
 
@@ -42,30 +42,31 @@ function App() {
   const getMain = async (key: string) => {
     await getMainData(key)
     .then((result) => {
-      setStudentId(result.studentId);
-      setName(result.name);
-      setMajor(result.major);
-      setGrade(result.grade);
-      setSemester(result.semester);
-      setStatus(result.status);
-      setTaken(result.taken);
-      setAverageScore(result.averageScore);
-  
+      setUser(result);
+    })
+    .catch()
+    await getScheduleData()
+    .then((result) => {
+      setSchedule(result);
       setIsLogin(true);
     })
     .catch()
  
   }
 
-
   return (
     <>
-        {isLogin ? null : <button value="가져오가" onClick={onLoginClick}/>}
+        <div>
+          <NavBar
+            mode="light"
+          >MyiApp  </NavBar>
+        </div>
         {isLogin 
         ?
-        <Main 
-        studentId={studentId} name={name} major={major} grade={grade} semester={semester} status={status} taken={taken} averageScore={averageScore}></Main>
-        : <Login isLogin={isLogin} studentId={studentId} setStudentId={setStudentId} password={password} setPassword={setPassword}  /> }
+        <Main user={user} schedule={schedule}></Main>
+        : 
+        <Login isLogin={isLogin} id={id} setId={setId} password={password} setPassword={setPassword}  /> }
+        {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
     </>
   )
 }
