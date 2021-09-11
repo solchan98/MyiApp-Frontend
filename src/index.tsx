@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import styled from 'styled-components'
-import { Flex, TabBar } from 'antd-mobile';
 
 ReactDOM.render(
   <React.StrictMode>
