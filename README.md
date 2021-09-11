@@ -23,4 +23,4 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 
 ---
 
-[MYIAPP-6] 쿠키를 이용하여 아이디 및 비밀번호 양방향 암호화 해서 기억하기
+[MYIAPP-6] 아이디, 비밀번호 Crypto 양방향 암호화 진행 후 쿠키를 통해 기억하기
