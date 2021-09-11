@@ -6,7 +6,7 @@ import './App.css';
 import Login from './pages/login';
 import Main from './pages/main';
 
-import { NavBar } from 'antd-mobile';
+import { NavBar, ActivityIndicator } from 'antd-mobile';
 
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
@@ -19,6 +19,7 @@ axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 function App() {
 
   const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isLogging, setIsLogging] = useState<boolean>(false);
 
   // 로그인 데이터
   const [id, setId] = useState<string>("");
@@ -33,10 +34,14 @@ function App() {
       "studentId": id,
       "password": password,
     }
-    const res = await axios.post(`http://${HOST}/api/account/login`, data);
-    
-    getMain(res.data);
+    setIsLogging(true);
+    // const res = await /
 
+    axios.post(`http://${HOST}/api/account/login`, data)
+    .then((res) => { getMain(res.data); })
+    .catch((err) => {
+      console.log(err)
+    })
   }
   
   const getMain = async (key: string) => {
@@ -51,7 +56,7 @@ function App() {
       setIsLogin(true);
     })
     .catch()
- 
+    setIsLogging(false);
   }
 
   return (
@@ -59,7 +64,7 @@ function App() {
         <div>
           <NavBar
             mode="light"
-          >MyiApp  </NavBar>
+          >MyiApp</NavBar>
         </div>
         {isLogin 
         ?
@@ -67,6 +72,11 @@ function App() {
         : 
         <Login isLogin={isLogin} id={id} setId={setId} password={password} setPassword={setPassword}  /> }
         {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
+        <ActivityIndicator
+                toast
+                text="Logging..."
+                animating={isLogging}
+              />
     </>
   )
 }
