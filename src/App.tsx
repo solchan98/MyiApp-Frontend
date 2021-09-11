@@ -13,11 +13,12 @@ axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 
 
 function App() {
+
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const [password, setPassword] = useState<string>("");
 
-  const [studentId, setStudentId] = useState<number>(0);
+  const [studentId, setStudentId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [major, setMajor] = useState<string>("");
   const [grade, setGrade] = useState<number>(0);
@@ -32,7 +33,7 @@ function App() {
       "studentId": studentId,
       "password": password
     }
-    const res = await axios.post("***/api/account/login", data);
+    const res = await axios.post("*/api/account/login", data);
     // console.log(res.data)
     
     getMain(res.data);
@@ -60,12 +61,12 @@ function App() {
 
   return (
     <>
-        {isLogin ? null : <button value="가져오가" onClick={onLoginClick}/>}
         {isLogin 
         ?
         <Main 
         studentId={studentId} name={name} major={major} grade={grade} semester={semester} status={status} taken={taken} averageScore={averageScore}></Main>
         : <Login isLogin={isLogin} studentId={studentId} setStudentId={setStudentId} password={password} setPassword={setPassword}  /> }
+        {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
     </>
   )
 }

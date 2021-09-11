@@ -4,7 +4,7 @@ type LoginProps = {
     isLogin: boolean;
     password: string;
     setPassword: any;
-    studentId: number;
+    studentId: string;
     setStudentId: any;
 }
 
@@ -19,16 +19,10 @@ const Login = ({ isLogin, studentId, setStudentId,password, setPassword}: LoginP
     }, []);
     return (
         <div>
-            <input name='studentId' value={studentId} onChange={onChangeStudentNumber} />
-            <input name='password' value={password} onChange={onChangePassword} type="password"/>
-            {`\nYou need to login`}
+            <input name='studentId' value={studentId} placeholder="학번을 입력하세요" onChange={onChangeStudentNumber} />
+            <input name='password' value={password} placeholder="비밀번호를 입력하세요" onChange={onChangePassword} type="password"/>
         </div>
     );
   }
-
-Login.defaultProps = {
-    studentId: "123",
-    password: "!23"
-}
 
 export default Login;

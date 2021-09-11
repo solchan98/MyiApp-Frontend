@@ -5,7 +5,7 @@ import cheerio from 'cheerio';
 /* 학번, 이름, 학과, 학년, 이수학기, 학적상태*/
 /* 이수학점 평균평점 */
 interface BasicUserData {
-    studentId: number,
+    studentId: string,
     name: string, 
     major: string,
     grade: number,
@@ -16,7 +16,7 @@ interface BasicUserData {
 }
 
 const getMainData = async(key: string) => {
-    const res = await axios.get("***/api/main", {
+    const res = await axios.get("*/api/main", {
         headers: {'key': key}
     });
     const $ = cheerio.load(res.data);
@@ -30,7 +30,7 @@ const getMainData = async(key: string) => {
         }
     })
     const result: BasicUserData = {
-        studentId: Number(data[0][1]),
+        studentId: data[0][1],
         name: data[0][3],
         major: data[1][1],
         grade: Number(data[1][3]),

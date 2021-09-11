@@ -14,3 +14,7 @@
 onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main.ts) -> 성적 조회 페이지 html 받아서 크롤링 진행 후 데이터 반환 -> isLogin: true, basicData 받은 값으로 변경 -> main.tsx 렌더
 
 ---
+
+[MYIAPP-4] 메인 페이지 ant design 사용하여 구색 갖추기
+
+---
