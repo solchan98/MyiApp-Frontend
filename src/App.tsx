@@ -27,7 +27,6 @@ function App() {
   // 학사 일정 데이터
   const [schedule, setSchedule] = useState<object>();
 
-
   const onLoginClick = async () => {
     const data =   {
       "studentId": id,

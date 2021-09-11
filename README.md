@@ -20,3 +20,5 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 ---
 
 [MYIAPP-5] 교내일정 크롤링 하여 메인 페이지에 제공하기 
+
+---
