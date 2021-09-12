@@ -3,10 +3,10 @@ import axios from 'axios';
 
 
 import './App.css';
-import Login from './pages/login';
-import Main from './pages/main';
+import Login from './components/login';
+import Main from './components/main';
 
-import { NavBar, ActivityIndicator } from 'antd-mobile';
+import { NavBar, ActivityIndicator} from 'antd-mobile';
 
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
@@ -35,6 +35,8 @@ function App() {
   // 쿠키 (아이디 비번 기억하기)
   const [cookies, setCookie, removeCookie] = useCookies(['rememberId', 'rememberPassword', 'rememberLogin']);
   const [rememberLogin, setRememberLogin] = useState<boolean>(true);
+  // 현재 컴포넌트
+  const [curComponent, setCurComponent] = useState<string>('');
 
   // 상태 변화 감지하여 작동
   useEffect(() => {
@@ -60,7 +62,10 @@ function App() {
     }
     // const res = await /
     axios.post(`http://${HOST}/api/account/login`, data)
-    .then((res) => { getMain(res.data); })
+    .then((res) => { 
+      getMain(res.data);
+      setCurComponent("main"); // 보여줄 컴포넌트 main으로 수정
+     })
     .catch((err) => {
       console.log(err);
       setIsLogging(false);
@@ -81,15 +86,15 @@ function App() {
     .catch()
     setIsLogging(false);
   }
-
   return (
     <>
         <div>
           <NavBar
             mode="light"
+            style={{marginBottom: '5px'}}
           >MyiApp</NavBar>
         </div>
-        {isLogin 
+        {isLogin && curComponent === 'main'
         ?
         <Main user={user} schedule={schedule}></Main>
         : 
@@ -99,7 +104,11 @@ function App() {
                 toast
                 text="Logging..."
                 animating={isLogging}
-              />
+        />
+        {isLogin && curComponent === 'semesterScore' ? <Main user={user} schedule={schedule}></Main> : null}
+        {/* {isLogin && curComponent === 'totalScore' ? <Main user={user} schedule={schedule}></Main> : null}
+        {isLogin && curComponent === 'schedule' ? <Main user={user} schedule={schedule}></Main> : null}
+        {isLogin && curComponent === 'graduration' ? <Main user={user} schedule={schedule}></Main> : null} */}
     </>
   )
 }

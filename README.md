@@ -24,3 +24,7 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 ---
 
 [MYIAPP-6] 아이디, 비밀번호 Crypto 양방향 암호화 진행 후 쿠키를 통해 기억하기
+
+---
+
+[MYIAPP-7] 상단 NavBar 아래에 Grid(Menu), 각 Menu 선택에 따라 해당 컴포넌트 랜더하기
