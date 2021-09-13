@@ -29,7 +29,7 @@ const TotalScore = ({totalScore}: TotalScoreProps) => {
         <Modal
           popup
           visible={modal}
-          onClose={()=> {console.log("z")}}
+          onClose={()=> {setModal(false)}}
           animationType="slide-up"
           style={{ maxHeight: "300px" }}
         >
@@ -41,9 +41,9 @@ const TotalScore = ({totalScore}: TotalScoreProps) => {
             )}
           </List>
         </Modal>
+        {selectYear === undefined || selectSemester === undefined ? <h3>년도와 학기를 선택하세요</h3> : null}
         <WingBlank size="lg" style={{ marginTop: "15px", maxHeight: "500px", overflow: "scroll"}}>
-                <List className="my-list">
-                    {selectYear === undefined || selectSemester === undefined ? <h3>년도와 학기를 선택하세요</h3> : null}
+                {selectYear !== undefined ? <List className="my-list">
                     {totalScore.map((i: any, key: number) => {
                         if(i.year === selectYear && i.semester === selectSemester) {
                             return (
@@ -62,7 +62,7 @@ const TotalScore = ({totalScore}: TotalScoreProps) => {
                         return null;
                     }
                     )}
-                </List>
+                </List> : null}
             </WingBlank>
         </>
     );
