@@ -40,3 +40,6 @@ App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration�
 09/13 17:00
 TotalScore 데이터 크롤링 .ts 파일 작성 완료.
 TotalScore 랜더하는 total.score.tsx 컴포넌트 일부, 년도와 학기별 Modal 방식으로 입력받기 구현 완료.
+
+09/13 17:35
+ToTalScore 데이터 ListView를 통해 년도 학기별 랜더 완료.
