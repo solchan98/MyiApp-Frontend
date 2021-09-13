@@ -36,3 +36,7 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 App.tsx를 메인으로 단일 페이지에 여러 컴포넌트로 구성하였다.
 App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration의 컴포넌트가 존재한다.
 현재 Main은 1차 완성하였고, TotalScore 1차 완성이 이번 MYIAPP-8의 EndPoint이다.
+
+09/13 17:00
+TotalScore 데이터 크롤링 .ts 파일 작성 완료.
+TotalScore 랜더하는 total.score.tsx 컴포넌트 일부, 년도와 학기별 Modal 방식으로 입력받기 구현 완료.

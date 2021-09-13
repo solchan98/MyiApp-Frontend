@@ -96,7 +96,7 @@ function App() {
     .then(async (res) => { 
       if(e.text === '통합성적'){ // 통합 성적이 클릭된 경우,
         await getTotalScore(res.data)
-        .then((result) => { setTotalScore(result); setCurComponent("totalScore"); setIsLogging(false)})
+        .then((result) => { setTotalScore(result); setCurComponent("totalScore");})
         .catch()
       } else if(e.text === '학기성적') {
 
@@ -105,6 +105,7 @@ function App() {
       } else if(e.text === '졸업학점') {
 
       }
+      setIsLogging(false); // Loging Indicator stop
      })
     .catch((err) => {
       console.log(err);
@@ -137,7 +138,7 @@ function App() {
         {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
         <ActivityIndicator
                 toast
-                text="Logging..."
+                text="Lodding..."
                 animating={isLogging}
         />
         {/*isLogin && curComponent === 'semesterScore' ? <Main user={user} schedule={schedule}></Main> : null*/}

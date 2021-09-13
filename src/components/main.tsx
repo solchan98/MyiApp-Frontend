@@ -26,7 +26,7 @@ const Main = ({user, schedule, setCurComponent, setIsLogging}: MainProps) => {
                         <div style={{marginBottom: '8px', fontSize: '18px'}}>학과: {user.major}</div>
                         <div style={{marginBottom: '8px', fontSize: '18px'}}>이수 학기: {user.semester}학기</div>
                         <div style={{marginBottom: '8px', fontSize: '18px'}}>학적: {user.status}</div>
-                        <div style={{marginBottom: '8px', fontSize: '18px'}}>이수 학점: {user.taken}점</div>
+                        <div style={{marginBottom: '8px', fontSize: '18px'}}>이수 학점: {user.credit}점</div>
                         <div style={{marginBottom: '8px', fontSize: '18px'}}>평균 평점: {user.averageScore}점</div>
                     </Card.Body>
                 </Card>

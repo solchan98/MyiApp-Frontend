@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  //<React.StrictMode> antd.mobile Component 중 modal을 쓰면 오류를 뱉어냄.. 난 해결할 맘 없어서 StrictMode 안쓰기로..
+    <App />,
+  //</React.StrictMode>,
   document.getElementById('root')
 );
 

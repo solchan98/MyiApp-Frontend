@@ -12,7 +12,7 @@ interface BasicUserData {
     grade: number,
     semester: number,
     status: string,
-    taken: number,
+    credit: number,
     averageScore: string
 }
 
@@ -37,7 +37,7 @@ const getMainData = async(key: string) => {
         grade: Number(data[1][3]),
         semester: Number(data[1][5]),
         status: data[3][3],
-        taken: Number(data[6][3]),
+        credit: Number(data[6][3]),
         averageScore: data[6][7],
     }
     return result
