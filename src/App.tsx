@@ -18,6 +18,7 @@ import { useCookies } from 'react-cookie';
 import Crypto from 'crypto-js';
 import TotalScore from './components/total.score';
 import getTotalScore from './crawling/total.score';
+import { rejects } from 'assert';
 
 function App() {
 
@@ -65,11 +66,13 @@ function App() {
     // const res = await /
     axios.post(`http://${HOST}/api/account/login`, data)
     .then((res) => { 
-      getMain(res.data);
+      res.data !== 'error' ? getMain(res.data) : console.log("Error/ Server Error"); 
       setCurComponent("main"); // 보여줄 컴포넌트 main으로 수정
      })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
       setIsLogging(false);
     })
   }
