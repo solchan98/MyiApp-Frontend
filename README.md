@@ -28,3 +28,11 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 ---
 
 [MYIAPP-7] 상단 NavBar 아래에 Grid(Menu), 각 Menu 선택에 따라 해당 컴포넌트 랜더하기
+
+---
+
+[MYIAPP-8] 통합성적 데이터 제공하기
+
+App.tsx를 메인으로 단일 페이지에 여러 컴포넌트로 구성하였다.
+App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration의 컴포넌트가 존재한다.
+현재 Main은 1차 완성하였고, TotalScore 1차 완성이 이번 MYIAPP-8의 EndPoint이다.

@@ -6,7 +6,7 @@ import './App.css';
 import Login from './components/login';
 import Main from './components/main';
 
-import { NavBar, ActivityIndicator} from 'antd-mobile';
+import { NavBar, ActivityIndicator, WingBlank, Grid} from 'antd-mobile';
 
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
@@ -16,9 +16,8 @@ import { HOST } from './host';
 import { useCookies } from 'react-cookie';
 
 import Crypto from 'crypto-js';
-
-axios.defaults.headers['Content-Type'] ='application/json;charset=utf-8';
-axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+import TotalScore from './components/total.score';
+import getTotalScore from './crawling/total.score';
 
 function App() {
 
@@ -30,6 +29,8 @@ function App() {
   const [password, setPassword] = useState<string | null>("");
   // 메인 페이지 데이터
   const [user, setUser] = useState<object>();
+  // 통합성적 페이지 데이터
+  const [totalScore, setTotalScore] = useState<object>();
   // 학사 일정 데이터
   const [schedule, setSchedule] = useState<object>();
   // 쿠키 (아이디 비번 기억하기)
@@ -37,6 +38,11 @@ function App() {
   const [rememberLogin, setRememberLogin] = useState<boolean>(true);
   // 현재 컴포넌트
   const [curComponent, setCurComponent] = useState<string>('');
+  // Login을 위한 데이터
+  const data =   {
+    "studentId": id,
+    "password": password,
+  }
 
   // 상태 변화 감지하여 작동
   useEffect(() => {
@@ -48,10 +54,6 @@ function App() {
   }, [cookies.rememberId, cookies.rememberLogin, cookies.rememberPassword, isLogin, rememberLogin, setId]);
 
   const onLoginClick = async () => {
-    const data =   {
-      "studentId": id,
-      "password": password,
-    }
     setIsLogging(true);
     // Cookie save or remove
     if(rememberLogin) {
@@ -86,17 +88,50 @@ function App() {
     .catch()
     setIsLogging(false);
   }
+
+  // Grid 4개 중 어느 하나라도 클릭된 경우,
+  const onGridClick = (e: any) => {
+    setIsLogging(true); // Loging Indicator start
+    axios.post(`http://${HOST}/api/account/login`, data)
+    .then(async (res) => { 
+      if(e.text === '통합성적'){ // 통합 성적이 클릭된 경우,
+        await getTotalScore(res.data)
+        .then((result) => { setTotalScore(result); setCurComponent("totalScore"); setIsLogging(false)})
+        .catch()
+      } else if(e.text === '학기성적') {
+
+      } else if(e.text === '시간표') {
+
+      } else if(e.text === '졸업학점') {
+
+      }
+     })
+    .catch((err) => {
+      console.log(err);
+      setIsLogging(false); // Loging Indicator stop
+    })
+  }
   return (
     <>
         <div>
           <NavBar
             mode="light"
             style={{marginBottom: '5px'}}
+            onClick={()=> {setCurComponent('main')}}
           >MyiApp</NavBar>
+          {isLogin ? <WingBlank>
+                <Grid 
+                itemStyle={{height:'50px'}}
+                data={[{icon:"" ,text: "학기성적"},{icon:"" ,text: "통합성적"}, {icon:"" , text: "시간표"}, {icon:"" , text: "졸업학점"} ]} 
+                activeStyle={false}
+                onClick={onGridClick}/>
+            </WingBlank> : null}
         </div>
-        {isLogin && curComponent === 'main'
+        {isLogin
         ?
-        <Main user={user} schedule={schedule}></Main>
+        curComponent === 'main' 
+          ? <Main user={user} schedule={schedule} setCurComponent={setCurComponent} setIsLogging={setIsLogging}></Main>
+          : curComponent === 'totalScore' ? <TotalScore totalScore={totalScore} ></TotalScore> : null
         : 
         <Login isLogin={isLogin} id={id ? id : ''} setId={setId} password={password ? password : ''} setPassword={setPassword} rememberLogin={rememberLogin} setRememberLogin={setRememberLogin} setCookie={setCookie} removeCookie={removeCookie}  /> }
         {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
@@ -105,12 +140,10 @@ function App() {
                 text="Logging..."
                 animating={isLogging}
         />
-        {isLogin && curComponent === 'semesterScore' ? <Main user={user} schedule={schedule}></Main> : null}
-        {/* {isLogin && curComponent === 'totalScore' ? <Main user={user} schedule={schedule}></Main> : null}
-        {isLogin && curComponent === 'schedule' ? <Main user={user} schedule={schedule}></Main> : null}
+        {/*isLogin && curComponent === 'semesterScore' ? <Main user={user} schedule={schedule}></Main> : null*/}
+        {/*isLogin && curComponent === 'schedule' ? <Main user={user} schedule={schedule}></Main> : null}
         {isLogin && curComponent === 'graduration' ? <Main user={user} schedule={schedule}></Main> : null} */}
     </>
   )
 }
-
 export default App;
