@@ -36,11 +36,12 @@ const getSubjectScheduleData = async (key: string) => {
             });
         } else if($(this).children('td').length === 3) {
             const text = $(this).html();
-            result[result.length - 1].time2 = String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[0].split('>')[1]);
+            if(!text?.includes('학점')){ // 시간표가 아닌 데이터가 포함되어있기 때문이다.
+                result[result.length - 1].time2 = String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[0].split('>')[1]);
+            }
         }
     })
-    result.pop();
-    // console.log(result);
+
     return result;
 }
 
