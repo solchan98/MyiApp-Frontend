@@ -15,23 +15,23 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 
 ---
 
-[MYIAPP-4] 메인 페이지 ant design 사용하여 구색 갖추기
+[MYIAPP-4]O 메인 페이지 ant design 사용하여 구색 갖추기
 
 ---
 
-[MYIAPP-5] 교내일정 크롤링 하여 메인 페이지에 제공하기 
+[MYIAPP-5]O 교내일정 크롤링 하여 메인 페이지에 제공하기 
 
 ---
 
-[MYIAPP-6] 아이디, 비밀번호 Crypto 양방향 암호화 진행 후 쿠키를 통해 기억하기
+[MYIAPP-6]O 아이디, 비밀번호 Crypto 양방향 암호화 진행 후 쿠키를 통해 기억하기
 
 ---
 
-[MYIAPP-7] 상단 NavBar 아래에 Grid(Menu), 각 Menu 선택에 따라 해당 컴포넌트 랜더하기
+[MYIAPP-7]O 상단 NavBar 아래에 Grid(Menu), 각 Menu 선택에 따라 해당 컴포넌트 랜더하기
 
 ---
 
-[MYIAPP-8] 통합성적 데이터 제공하기
+[MYIAPP-8]O 통합성적 데이터 제공하기
 
 App.tsx를 메인으로 단일 페이지에 여러 컴포넌트로 구성하였다.
 App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration의 컴포넌트가 존재한다.
@@ -48,7 +48,13 @@ ToTalScore 데이터 ListView를 통해 년도 학기별 랜더 완료.
 통합 성적 컴포넌트 년도 선택 유무에 따라 리스트뷰 랜더, 년도 학기 설정 메세지 위치 수정
 
 ---
-[MYIAPP-9] 서버에서 로그인 에러 응답에 대한 정상 응답 오류 수정
+[MYIAPP-9]ing 서버에서 로그인 에러 응답에 대한 정상 응답 오류 수정
 
 09/13 08:30
 현재 서버에서 로그인 에러에 대한 응답이 2xx의 정상으로 응답되어, 임시로 응답 메세지로 에러 처리.
+
+[MYIAPP-10]ing 시간표 데이터 크롤링
+
+09/14 15:20
+시간표 HTML응답받아 데이터 크롤링 완료.
+
