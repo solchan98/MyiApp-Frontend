@@ -31,7 +31,7 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 
 ---
 
-[MYIAPP-8]O 통합성적 데이터 제공하기
+[MYIAPP-8]ing 통합성적 데이터 제공하기
 
 App.tsx를 메인으로 단일 페이지에 여러 컴포넌트로 구성하였다.
 App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration의 컴포넌트가 존재한다.
@@ -53,7 +53,7 @@ ToTalScore 데이터 ListView를 통해 년도 학기별 랜더 완료.
 09/13 08:30
 현재 서버에서 로그인 에러에 대한 응답이 2xx의 정상으로 응답되어, 임시로 응답 메세지로 에러 처리.
 
-[MYIAPP-10]ing 시간표 데이터 크롤링
+[MYIAPP-10]ing 시간표 데이터 제공하기
 
 09/14 15:20
 시간표 HTML응답받아 데이터 크롤링 완료.
