@@ -18,6 +18,8 @@ import { useCookies } from 'react-cookie';
 import Crypto from 'crypto-js';
 import TotalScore from './components/total.score';
 import getTotalScore from './crawling/total.score';
+import getSubjectScheduleData from './crawling/subject.schedule';
+import SubjectSchedule from './components/subjecet.schedule';
 
 function App() {
 
@@ -29,8 +31,10 @@ function App() {
   const [password, setPassword] = useState<string | null>("");
   // 메인 페이지 데이터
   const [user, setUser] = useState<object>();
-  // 통합성적 페이지 데이터
+  // 통합성적 컴포넌트 데이터
   const [totalScore, setTotalScore] = useState<object>();
+  // 시간표 컴포넌트 데이터
+  const [subjectSchedule, setSubjectSchedule] = useState<object>();
   // 학사 일정 데이터
   const [schedule, setSchedule] = useState<object>();
   // 쿠키 (아이디 비번 기억하기)
@@ -108,6 +112,9 @@ function App() {
       } else if(e.text === '학기성적') {
 
       } else if(e.text === '시간표') {
+        await getSubjectScheduleData(res.data)
+        .then((result) => { setSubjectSchedule(result); setCurComponent("subjectSchedule");})
+        .catch()
 
       } else if(e.text === '졸업학점') {
 
@@ -139,7 +146,8 @@ function App() {
         ?
         curComponent === 'main' 
           ? <Main user={user} schedule={schedule} setCurComponent={setCurComponent} setIsLogging={setIsLogging}></Main>
-          : curComponent === 'totalScore' ? <TotalScore totalScore={totalScore} ></TotalScore> : null
+          : curComponent === 'totalScore' ? <TotalScore totalScore={totalScore} ></TotalScore>
+            : isLogin && curComponent === 'subjectSchedule' ? <SubjectSchedule subjectSchedule={subjectSchedule}></SubjectSchedule> : null
         : 
         <Login isLogin={isLogin} id={id ? id : ''} setId={setId} password={password ? password : ''} setPassword={setPassword} rememberLogin={rememberLogin} setRememberLogin={setRememberLogin} setCookie={setCookie} removeCookie={removeCookie}  /> }
         {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
@@ -149,8 +157,7 @@ function App() {
                 animating={isLogging}
         />
         {/*isLogin && curComponent === 'semesterScore' ? <Main user={user} schedule={schedule}></Main> : null*/}
-        {/*isLogin && curComponent === 'schedule' ? <Main user={user} schedule={schedule}></Main> : null}
-        {isLogin && curComponent === 'graduration' ? <Main user={user} schedule={schedule}></Main> : null} */}
+        {/*isLogin && curComponent === 'graduration' ? <Main user={user} schedule={schedule}></Main> : null} */}
     </>
   )
 }

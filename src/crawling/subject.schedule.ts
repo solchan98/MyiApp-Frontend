@@ -5,7 +5,7 @@ import { HOST } from '../host';
 interface subjectSchedule {
     number: String,
     code: string,
-    titie: string,
+    title: string,
     professor: string,
     credit: number,
     time1: string,
@@ -25,9 +25,9 @@ const getSubjectScheduleData = async (key: string) => {
         if($(this).children('td').length === 8) { 
             const text = $(this).html();
             result.push({
-                number: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[0].split('>')[1]),
+                number: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[0].split('>')[1]), // Not Use(09/15)
                 code: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[1].split('>')[1]),
-                titie: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[2].split(';')[1]),
+                title: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[2].split(';')[1]),
                 professor: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[3].split('>')[1]),
                 credit: Number(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[4].split('>')[1]),
                 time1: String(text?.replace(/\n|\t|<!--|강좌번호|-->|/g,'').split('</td>')[5].split('>')[1]),
