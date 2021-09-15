@@ -1,9 +1,17 @@
 # MyiApp-FrontEnd
+
 명지대학교 Myiweb의 일부 기능을 제공하는 WebView를 활용한 App.
 
 ---
 
-[MYIAPP-2] 로그인 진행 후 발급받은 키를 통해 기본정보 출력하기.
+[MYIAPP-9]ing 서버에서 로그인 에러 응답에 대한 정상 응답 오류 수정
+
+09/13 08:30
+현재 서버에서 로그인 에러에 대한 응답이 2xx의 정상으로 응답되어, 임시로 응답 메세지로 에러 처리.
+
+---
+
+[MYIAPP-2]O 로그인 진행 후 발급받은 키를 통해 기본정보 출력하기.
 
 **App.tsx**: Default Page  
 **pages/login**: 학번, 비번을 입력 받는 페이지, App.tsx에서 학번, 비번 각Set을 모두 props로 받아서 사용
@@ -31,7 +39,7 @@ onLoginClick(Login 페이지에서) -> 키 발급 -> getMain -> getMainData(main
 
 ---
 
-[MYIAPP-8]ing 통합성적 데이터 제공하기
+[MYIAPP-8]O 통합성적 데이터 제공하기
 
 App.tsx를 메인으로 단일 페이지에 여러 컴포넌트로 구성하였다.
 App하위로 Main, TotalScore, SemesterScore, Schedule(시간표), Graduration의 컴포넌트가 존재한다.
@@ -48,12 +56,8 @@ ToTalScore 데이터 ListView를 통해 년도 학기별 랜더 완료.
 통합 성적 컴포넌트 년도 선택 유무에 따라 리스트뷰 랜더, 년도 학기 설정 메세지 위치 수정
 
 ---
-[MYIAPP-9]ing 서버에서 로그인 에러 응답에 대한 정상 응답 오류 수정
 
-09/13 08:30
-현재 서버에서 로그인 에러에 대한 응답이 2xx의 정상으로 응답되어, 임시로 응답 메세지로 에러 처리.
-
-[MYIAPP-10]ing 시간표 데이터 제공하기
+[MYIAPP-10]O 시간표 데이터 제공하기
 
 09/14 15:20
 시간표 HTML응답받아 데이터 크롤링 완료.
