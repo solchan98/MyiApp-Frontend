@@ -2,7 +2,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import { HOST } from '../host';
 
-interface subjectSchedule {
+interface graduatedCredit {
     common: string[]; // 공통교양
     essential: string[]; // 핵심교양
     basic: string[]; // 학문기초교양
@@ -11,13 +11,10 @@ interface subjectSchedule {
     free: string[]; // 자유선택 [(교직, 자유), 졸업자유]
     chapel: string[]; // 채플
     total: string[]; // 총 취득[총합, 졸업총합]
-
-
 }
 
-
 const getGraduatedCredit = async (key: string) => {
-    let result: subjectSchedule = {common: [], essential: [], basic: [], normal: [], major: [], free: [], chapel: [], total: []};
+    let result: graduatedCredit = {common: [], essential: [], basic: [], normal: [], major: [], free: [], chapel: [], total: []};
     const html = await axios.get(`http://${HOST}/api/graduated`, {
         headers: {'key': key},
     });
@@ -67,13 +64,10 @@ const getGraduatedCredit = async (key: string) => {
     // 총합
     const $total = $('body').find('.total'); 
         $total.each(function() {
-        const text = $(this).text().replace(/\n|\t/g,'').slice(0, 2);
+        const text = $(this).text().replace(/\n|\t/g,'').slice(0, 3);
         result.total.push(text);
     })
-    // console.log(result);
     return result;
 }
-
-
 
 export default getGraduatedCredit;
