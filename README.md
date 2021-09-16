@@ -1,6 +1,6 @@
 # MyiApp-FrontEnd
 
-명지대학교 Myiweb의 일부 기능을 제공하는 WebView를 활용한 App.
+명지대학교 Myiweb의 일부 기능을 제공하는 Web(ToyProject)
 
 09/16 현재  
 - 기능 구현 완료 및 1차 디자인 컴포넌트 구현 완료. 
