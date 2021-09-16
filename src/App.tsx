@@ -22,6 +22,8 @@ import getSubjectScheduleData from './crawling/subject.schedule';
 import SubjectSchedule from './components/subjecet.schedule';
 import getGraduatedCredit from './crawling/graduated.credit';
 import GraduatedCredit from './components/graduate.credit';
+import SemesterScore from './components/semester.score';
+import getSemesterScore from './crawling/semester.score';
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
   const [password, setPassword] = useState<string | null>("");
   // 메인 페이지 데이터
   const [user, setUser] = useState<object>();
+  // 학기성적 컴포넌트 데이터
+  const [semesterScore, setSemesterScore] = useState<object>();
   // 통합성적 컴포넌트 데이터
   const [totalScore, setTotalScore] = useState<object>();
   // 시간표 컴포넌트 데이터
@@ -114,7 +118,9 @@ function App() {
         .then((result) => { setTotalScore(result); setCurComponent("totalScore");})
         .catch()
       } else if(e.text === '학기성적') {
-
+        await getSemesterScore(res.data)
+        .then((result) => { setSemesterScore(result); setCurComponent("semesterScore");})
+        .catch()
       } else if(e.text === '시간표') {
         await getSubjectScheduleData(res.data)
         .then((result) => { setSubjectSchedule(result); setCurComponent("subjectSchedule");})
@@ -155,7 +161,8 @@ function App() {
           ? <Main user={user} schedule={schedule} setCurComponent={setCurComponent} setIsLogging={setIsLogging}></Main>
           : curComponent === 'totalScore' ? <TotalScore totalScore={totalScore} ></TotalScore>
             : isLogin && curComponent === 'subjectSchedule' ? <SubjectSchedule subjectSchedule={subjectSchedule}></SubjectSchedule>
-              : isLogin && curComponent === 'grauatedCredit' ? <GraduatedCredit graduateCredit={graduatedCredit}></GraduatedCredit> : null
+              : isLogin && curComponent === 'grauatedCredit' ? <GraduatedCredit graduateCredit={graduatedCredit}></GraduatedCredit>
+                : isLogin && curComponent === 'semesterScore' ? <SemesterScore semesterScore={semesterScore}></SemesterScore> : null
         : 
         <Login isLogin={isLogin} id={id ? id : ''} setId={setId} password={password ? password : ''} setPassword={setPassword} rememberLogin={rememberLogin} setRememberLogin={setRememberLogin} setCookie={setCookie} removeCookie={removeCookie}  /> }
         {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
@@ -164,7 +171,6 @@ function App() {
                 text="Lodding..."
                 animating={isLogging}
         />
-        {/*isLogin && curComponent === 'graduration' ? <Main user={user} schedule={schedule}></Main> : null} */}
     </>
   )
 }

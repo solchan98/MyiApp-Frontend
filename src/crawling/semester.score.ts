@@ -21,12 +21,8 @@ const getSemesterScore = async(key: string) => {
             temp.push($(this).text().replace(/\n|\t/g,''));
         })
         result.push(temp);
-        // const text = $(this).html();
-        // result.push(text?.split(" </tr"));
     })
-    console.log(result);
     
-    // return result;
+    return result;
 }
-
 export default getSemesterScore;
