@@ -3,11 +3,6 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import { HOST } from '../host';
 
-
-interface SemesterScoreProps {
-
-}
-
 const getSemesterScore = async(key: string) => {
     const result: any = [];
     const res = await axios.get(`http://${HOST}/api/semester/score`, {
