@@ -24,7 +24,9 @@ const TotalScore = ({totalScore}: TotalScoreProps) => {
 
     return (
         <>
-        <Button onClick={onClickModalOpenButton}>년도 학기 선택</Button>
+        <WingBlank size="lg">
+            <Button onClick={onClickModalOpenButton}>년도 학기 선택</Button>
+        </WingBlank>
         <WhiteSpace />
         <Modal
           popup
@@ -41,7 +43,7 @@ const TotalScore = ({totalScore}: TotalScoreProps) => {
             )}
           </List>
         </Modal>
-        {selectYear === undefined || selectSemester === undefined ? <h3>년도와 학기를 선택하세요</h3> : null}
+        {selectYear === undefined || selectSemester === undefined ? <div style={{textAlign: 'center'}}>년도와 학기를 선택하세요</div> : null}
         <WingBlank size="lg" style={{ marginTop: "15px", maxHeight: "500px", overflow: "scroll"}}>
                 {selectYear !== undefined ? <List className="my-list">
                     {totalScore.map((i: any, key: number) => {

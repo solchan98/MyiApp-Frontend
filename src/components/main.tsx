@@ -9,7 +9,7 @@ type MainProps = {
     setIsLogging: any;
 }
 
-const Main = ({user, schedule, setCurComponent, setIsLogging}: MainProps) => {
+const Main = ({user, schedule}: MainProps) => {
 
     return (
         <div>

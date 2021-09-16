@@ -8,8 +8,8 @@ const SubjectSchedule = ({subjectSchedule}: SubjectScheduleProps) => {
 
     return (
         <>
-        <WingBlank size="lg" style={{maxHeight: "550px", overflow: "scroll", marginTop: '5px'}}>
-
+        <p style={{paddingLeft: '15px', marginBottom: '3px', fontSize: '17px'}}>수강성적</p>
+        <WingBlank size="lg" style={{maxHeight: "550px", overflow: "scroll"}}>
         <List className="my-list">
             {subjectSchedule.map((i: any, key: number) => 
                 <Card style={{marginBottom: '1px'}} key={key}>

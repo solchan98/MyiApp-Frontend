@@ -51,6 +51,11 @@ const GraduatedCredit = ({graduateCredit}: GraduatedCreditProps) => {
 
     return (
         <>
+            <WingBlank style={{background: '#FFFFFF', marginTop: '5px'}}>
+                <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
+                    Notice: 졸업기준을 넘기게 이수한 모든 학점은 자유학점으로 넘어갑니다.
+                </NoticeBar>
+            </WingBlank>
             <p style={{paddingLeft: '15px', marginBottom: '3px', fontSize: '17px'}}>교양<span style={{fontSize: '15px'}}>( 이수/ 졸업기준 )</span></p>
             <WingBlank style={{background: '#FFFFFF'}}>
                 {data1.map((d, key) => <List.Item key={key} extra={`${d.text[0]}/ ${d.text[1]}`}>{d.name}</List.Item>)}
@@ -66,11 +71,6 @@ const GraduatedCredit = ({graduateCredit}: GraduatedCreditProps) => {
             <p style={{paddingLeft: '15px', marginBottom: '3px', fontSize: '17px'}}>졸업<span style={{fontSize: '15px'}}>( 이수/ 졸업기준 )</span></p>
             <WingBlank style={{background: '#FFFFFF'}}>
                 {data3.map((d, key) => <List.Item key={key} extra={`${d.text[0]}/ ${d.text[1]}`}>{d.name}</List.Item>)}
-            </WingBlank>
-            <WingBlank style={{background: '#FFFFFF', marginTop: '5px'}}>
-                <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
-                    Notice: 졸업기준을 넘기게 이수한 모든 학점은 자유학점으로 넘어갑니다.
-                </NoticeBar>
             </WingBlank>
         </>
     );

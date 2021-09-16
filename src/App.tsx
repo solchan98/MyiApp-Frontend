@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
 import './App.css';
 import Login from './components/login';
 import Main from './components/main';
-
-import { NavBar, ActivityIndicator, WingBlank, Grid} from 'antd-mobile';
-
+import { NavBar, ActivityIndicator, WingBlank, Grid, Button} from 'antd-mobile';
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
-
 import { HOST } from './host';
-
 import { useCookies } from 'react-cookie';
-
 import Crypto from 'crypto-js';
 import TotalScore from './components/total.score';
 import getTotalScore from './crawling/total.score';
@@ -88,8 +81,10 @@ function App() {
       }
      })
     .catch((err) => {
-      console.log(err);
       setIsLogging(false);
+      if(err.response.status === 401) {
+        alert("힉번 혹은 비밀번호가 잘못되었습니다.");
+      }
     })
   }
   
@@ -144,9 +139,9 @@ function App() {
         <div>
           <NavBar
             mode="light"
-            style={{marginBottom: '5px'}}
+            style={{marginBottom: '5px', fontWeight: 'bold'}}
             onClick={()=> {setCurComponent('main')}}
-          >MyiApp</NavBar>
+          >MYIAPP</NavBar>
           {isLogin ? <WingBlank>
                 <Grid 
                 itemStyle={{height:'50px'}}
@@ -165,7 +160,7 @@ function App() {
                 : isLogin && curComponent === 'semesterScore' ? <SemesterScore semesterScore={semesterScore}></SemesterScore> : null
         : 
         <Login isLogin={isLogin} id={id ? id : ''} setId={setId} password={password ? password : ''} setPassword={setPassword} rememberLogin={rememberLogin} setRememberLogin={setRememberLogin} setCookie={setCookie} removeCookie={removeCookie}  /> }
-        {isLogin ? null : <button value="login" onClick={onLoginClick}>로그인</button>}
+        {isLogin ? null : <WingBlank style={{background: '#FFFFFF', marginTop: '5px'}}><Button type="primary" onClick={onLoginClick}>로그인</Button></WingBlank>}
         <ActivityIndicator
                 toast
                 text="Lodding..."
