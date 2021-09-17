@@ -1,6 +1,8 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { HOST } from '../host';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 interface subjectSchedule {
     number: String,
@@ -16,7 +18,7 @@ interface subjectSchedule {
 
 const getSubjectScheduleData = async (key: string) => {
     const result: subjectSchedule[] = [];
-    const html = await axios.get(`http://${HOST}/api/subject/schedule`, {
+    const html = await axios.get(`http://${process.env.REACT_APP_HOST}/api/subject/schedule`, {
         headers: {'key': key},
     });
     const $ = cheerio.load(html.data);

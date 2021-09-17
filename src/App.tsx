@@ -6,7 +6,6 @@ import Main from './components/main';
 import { NavBar, ActivityIndicator, WingBlank, Grid, Button} from 'antd-mobile';
 import getMainData from './crawling/main';
 import getScheduleData from './crawling/schedule';
-import { HOST } from './host';
 import { useCookies } from 'react-cookie';
 import Crypto from 'crypto-js';
 import TotalScore from './components/total.score';
@@ -17,6 +16,9 @@ import getGraduatedCredit from './crawling/graduated.credit';
 import GraduatedCredit from './components/graduate.credit';
 import SemesterScore from './components/semester.score';
 import getSemesterScore from './crawling/semester.score';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 function App() {
 
@@ -48,27 +50,29 @@ function App() {
     "studentId": id,
     "password": password,
   }
+  const secret: any = process.env.REACT_APP_SECRETKEY;
 
   // 상태 변화 감지하여 작동
   useEffect(() => {
+    
     if(cookies.rememberId !== undefined && cookies.rememberPassword !== undefined && !isLogin) {
-      setId(Crypto.AES.decrypt(cookies.rememberId, "여기 값 env설정 해야해").toString(Crypto.enc.Utf8));
-      setPassword(Crypto.AES.decrypt(cookies.rememberPassword, "여기 값 env설정 해야해").toString(Crypto.enc.Utf8));
+      setId(Crypto.AES.decrypt(cookies.rememberId, secret).toString(Crypto.enc.Utf8));
+      setPassword(Crypto.AES.decrypt(cookies.rememberPassword, secret).toString(Crypto.enc.Utf8));
       setRememberLogin(true);
     }
-  }, [cookies.rememberId, cookies.rememberLogin, cookies.rememberPassword, isLogin, rememberLogin, setId]);
+  }, [cookies.rememberId, cookies.rememberLogin, cookies.rememberPassword, isLogin, rememberLogin, secret, setId]);
 
   const onLoginClick = async () => {
     setIsLogging(true);
     // Cookie save or remove
     if(rememberLogin) {
-      const encodId = await Crypto.AES.encrypt(id ? id : '', "여기 값 env설정 해야해").toString();
-      const encodPassword = await Crypto.AES.encrypt(password ? password : '', "여기 값 env설정 해야해").toString();
+      const encodId = await Crypto.AES.encrypt(id ? id : '', secret).toString();
+      const encodPassword = await Crypto.AES.encrypt(password ? password : '', secret).toString();
       setCookie('rememberId', encodId, {maxAge: 360000});
       setCookie('rememberPassword', encodPassword, {maxAge: 360000});
     }
     // const res = await /
-    axios.post(`http://${HOST}/api/account/login`, data)
+    axios.post(`http://${process.env.REACT_APP_HOST}/api/account/login`, data)
     .then((res) => { 
       if(res.data !== 'error') {
         getMain(res.data)
@@ -106,7 +110,7 @@ function App() {
   // Grid 4개 중 어느 하나라도 클릭된 경우,
   const onGridClick = (e: any) => {
     setIsLogging(true); // Loging Indicator start
-    axios.post(`http://${HOST}/api/account/login`, data)
+    axios.post(`http://${process.env.REACT_APP_HOST}/api/account/login`, data)
     .then(async (res) => { 
       if(e.text === '통합성적'){ // 통합 성적이 클릭된 경우,
         await getTotalScore(res.data)

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { HOST } from '../host';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 interface graduatedCredit {
     common: string[]; // 공통교양
@@ -15,7 +17,7 @@ interface graduatedCredit {
 
 const getGraduatedCredit = async (key: string) => {
     let result: graduatedCredit = {common: [], essential: [], basic: [], normal: [], major: [], free: [], chapel: [], total: []};
-    const html = await axios.get(`http://${HOST}/api/graduated`, {
+    const html = await axios.get(`http://${process.env.REACT_APP_HOST}/api/graduated`, {
         headers: {'key': key},
     });
     const $ = cheerio.load(html.data);

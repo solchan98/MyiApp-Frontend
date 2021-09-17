@@ -1,11 +1,13 @@
 
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { HOST } from '../host';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const getSemesterScore = async(key: string) => {
     const result: any = [];
-    const res = await axios.get(`http://${HOST}/api/semester/score`, {
+    const res = await axios.get(`http://${process.env.REACT_APP_HOST}/api/semester/score`, {
         headers: {'key': key}
     });
     const $ = cheerio.load(res.data);
