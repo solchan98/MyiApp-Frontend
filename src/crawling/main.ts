@@ -19,7 +19,7 @@ interface BasicUserData {
 }
 
 const getMainData = async(key: string) => {
-    const res = await axios.get(`http://${process.env.REACT_APP_HOST}/api/main`, {
+    const res = await axios.get(`${process.env.REACT_APP_HOST}/api/main`, {
         headers: {'key': key}
     });
     const $ = cheerio.load(res.data);

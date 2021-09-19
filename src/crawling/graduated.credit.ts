@@ -17,7 +17,7 @@ interface graduatedCredit {
 
 const getGraduatedCredit = async (key: string) => {
     let result: graduatedCredit = {common: [], essential: [], basic: [], normal: [], major: [], free: [], chapel: [], total: []};
-    const html = await axios.get(`http://${process.env.REACT_APP_HOST}/api/graduated`, {
+    const html = await axios.get(`${process.env.REACT_APP_HOST}/api/graduated`, {
         headers: {'key': key},
     });
     const $ = cheerio.load(html.data);

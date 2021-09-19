@@ -7,7 +7,7 @@ dotenv.config();
 const getTotalScore = async(key: string) => {
     const result: object[] = [];
     let totalYear: number[] = [];
-    const res = await axios.get(`http://${process.env.REACT_APP_HOST}/api/main`, {
+    const res = await axios.get(`${process.env.REACT_APP_HOST}/api/main`, {
         headers: {'key': key}
     });
     const $ = cheerio.load(res.data);

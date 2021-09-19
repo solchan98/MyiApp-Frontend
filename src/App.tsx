@@ -72,7 +72,7 @@ function App() {
       setCookie('rememberPassword', encodPassword, {maxAge: 360000});
     }
     // const res = await /
-    axios.post(`http://${process.env.REACT_APP_HOST}/api/account/login`, data)
+    axios.post(`${process.env.REACT_APP_HOST}/api/account/login`, data)
     .then((res) => { 
       if(res.data !== 'error') {
         getMain(res.data)
@@ -110,7 +110,7 @@ function App() {
   // Grid 4개 중 어느 하나라도 클릭된 경우,
   const onGridClick = (e: any) => {
     setIsLogging(true); // Loging Indicator start
-    axios.post(`http://${process.env.REACT_APP_HOST}/api/account/login`, data)
+    axios.post(`${process.env.REACT_APP_HOST}/api/account/login`, data)
     .then(async (res) => { 
       if(e.text === '통합성적'){ // 통합 성적이 클릭된 경우,
         await getTotalScore(res.data)
