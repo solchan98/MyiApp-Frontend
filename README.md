@@ -187,3 +187,8 @@ ssl인증과정까지 진행하여 https까지 마무리 하였지만 지속적�
 위 사항 포함 지속적인 관리에 대한 피드백에 대한 응답에 확신을 주기 어려워 서비스 주소는 공개하지만 공식적인 서비스는 하지 않기로 하였다.
 
 > 서비스 https://myiapp.shop
+
+---
+# Link
+- [Velog](https://velog.io/@solchan/MYIAPP-%EB%AA%85%EC%A7%80%EB%8C%80%ED%95%99%EA%B5%90-MYIAPP-%ED%86%A0%EC%9D%B4%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
+- [MYIAPP Backend Ropository](https://github.com/solchan98/MyiApp-BackEnd)
