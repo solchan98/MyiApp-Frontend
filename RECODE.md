@@ -2,8 +2,8 @@
 
 명지대학교 Myiweb의 일부 기능을 제공하는 Web(ToyProject)
 
-09/17 현재  
-- favicon 
+09/21 현재  
+- favicon 없음  
 
 ---
 
@@ -19,6 +19,7 @@
 
 09/19 17:40
 Axios http -> https
+
 ---
 
 [MYIAPP-12]O 학기 성적 데이터 제공하기
