@@ -174,7 +174,8 @@
 ssl인증과정까지 진행하여 https까지 마무리 하였지만 지속적인 관리가 힘들 것으로 생각되어 개인적으로 사용하기로 결정하였다 ㅠㅠ
 
 아래는 에브리타임에서 서비스 소개 및 반응이다.
-![](https://images.velog.io/images/solchan/post/db2dc8f4-8d6c-41ca-a7ee-6a5f13f58fae/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.40.png)
+<!-- ![](https://images.velog.io/images/solchan/post/db2dc8f4-8d6c-41ca-a7ee-6a5f13f58fae/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.40.png) -->
+![image](https://user-images.githubusercontent.com/64524916/135065399-c05ea734-c5c2-4b80-97e9-08a67735bddd.png)
 ![](https://images.velog.io/images/solchan/post/29b9788b-c5fb-496d-9cde-ca361cf08f38/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.35.56.png)
 ![](https://images.velog.io/images/solchan/post/6ff29013-b35c-443d-8a5a-e23e709287de/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%205.36.12.png)
 
