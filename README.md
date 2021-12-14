@@ -193,5 +193,5 @@ ssl인증과정까지 진행하여 https까지 마무리 하였지만 지속적�
 
 ---
 # Link
-- [Blog](https://solchan98.tistory.com/17)
+- [Blog](https://velog.io/@solchan)
 - [MYIAPP Backend Ropository](https://github.com/solchan98/MyiApp-BackEnd)
